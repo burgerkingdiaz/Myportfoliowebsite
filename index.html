@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Portfolio</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #0d6efd;
+            --secondary-color: #212529;
+            --bg-light: #f8f9fa;
+            --bg-dark: #111;
+            --text-gray: #6c757d;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px 0;
+        }
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--secondary-color) !important;
+        }
+        .nav-link {
+            font-weight: 500;
+            color: var(--secondary-color);
+            margin-left: 15px;
+            transition: color 0.3s;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        #home {
+            height: 100vh;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 60px;
+        }
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            margin-bottom: 20px;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Typewriter Cursor */
+        .typing-text::after {
+            content: '|';
+            animation: blink 0.7s infinite;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 80px 0;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            font-weight: 700;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 4px;
+            background: var(--primary-color);
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Card/Box Styling */
+        .skill-box, .feedback-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+        }
+        .skill-box:hover, .feedback-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        .icon-box {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        /* Works Carousel Styling */
+        .carousel-item img {
+            height: 500px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .carousel-caption {
+            background: rgba(0,0,0,0.7);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-dark);
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+        }
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Animations Keyframes */
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-20px); } 100% { transform: translateY(0px); } }
+        
+        /* Scroll Reveal Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#main-nav" tabindex="0">
+
+    <nav class="navbar navbar-expand-lg fixed-top" id="main-nav">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <i class="fas fa-code text-primary"></i> AlexDev
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#works">Works</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#expertise">Expertise</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#feedback">Client Feedback</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <img src="https://placehold.co/400x400/0d6efd/ffffff?text=Profile" alt="Profile" class="profile-img">
+                    
+                    <h2 class="display-6 fw-bold mb-3">Hello, I'm Alex</h2>
+                    <h1 class="display-4 fw-bold mb-4 text-primary">I am a <span class="typing-text"></span></h1>
+                    
+                    <p class="lead text-muted mb-4">Crafting creative, functional, and visually stunning digital experiences.</p>
+                    
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="#works" class="btn btn-primary btn-lg rounded-pill px-4">View Work</a>
+                        <a href="#" class="btn btn-outline-dark btn-lg rounded-pill px-4" download>
+                            Download CV <i class="fas fa-download ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="reveal">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4">
+                    <img src="https://placehold.co/600x400/EEE/31343C?text=About+Image" class="img-fluid rounded-3 shadow" alt="About Me">
+                </div>
+                <div class="col-lg-6">
+                    <h3>Solving Problems Through Code</h3>
+                    <p class="text-muted mt-3">
+                        I am a passionate web developer with over 5 years of experience in building modern web applications. 
+                        My journey began with a curiosity for how things work on the internet, which quickly turned into a career 
+                        obsessed with clean code and user-centric design.
+                    </p>
+                    <p class="text-muted">
+                        When I'm not coding, I'm exploring new design trends or contributing to open-source projects.
+                    </p>
+                    
+                    <div class="mt-4">
+                        <label class="fw-bold">Web Design</label>
+                        <div class="progress mb-3" style="height: 10px;">
+                            <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <label class="fw-bold">Development</label>
+                        <div class="progress mb-3" style="height: 10px;">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="works" class="bg-light reveal">
+        <div class="container">
+            <h2 class="section-title">Recent Works</h2>
+            
+            <div id="worksCarousel" class="carousel slide shadow rounded-3 overflow-hidden" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#worksCarousel" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#worksCarousel" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#worksCarousel" data-bs-slide-to="2"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="https://placehold.co/1200x600/212529/ffffff?text=E-Commerce+Project" class="d-block w-100" alt="Project 1">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>E-Commerce Platform</h5>
+                            <p>A full-stack shopping application using React and Node.js.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://placehold.co/1200x600/5c636a/ffffff?text=Portfolio+Design" class="d-block w-100" alt="Project 2">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Creative Portfolio</h5>
+                            <p>Minimalist design for a photography client.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://placehold.co/1200x600/0d6efd/ffffff?text=App+Dashboard" class="d-block w-100" alt="Project 3">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Analytics Dashboard</h5>
+                            <p>Data visualization tool for finance sector.</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#worksCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#worksCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="expertise" class="reveal">
+        <div class="container">
+            <h2 class="section-title">My Expertise</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="skill-box text-center">
+                        <div class="icon-box"><i class="fas fa-laptop-code"></i></div>
+                        <h4>Web Development</h4>
+                        <p class="text-muted">Building fast, responsive, and secure websites using HTML5, CSS3, and modern JavaScript frameworks.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="skill-box text-center">
+                        <div class="icon-box"><i class="fas fa-paint-brush"></i></div>
+                        <h4>UI/UX Design</h4>
+                        <p class="text-muted">Creating intuitive user interfaces and experiences with Figma and Adobe XD.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="skill-box text-center">
+                        <div class="icon-box"><i class="fas fa-mobile-alt"></i></div>
+                        <h4>App Development</h4>
+                        <p class="text-muted">Developing cross-platform mobile applications that run smoothly on iOS and Android.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="feedback" class="bg-light reveal">
+        <div class="container">
+            <h2 class="section-title">Client Feedback</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feedback-card">
+                        <div class="text-warning mb-3">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="fst-italic">"Alex delivered the project way ahead of schedule. The design was exactly what we envisioned."</p>
+                        <div class="d-flex align-items-center mt-4">
+                            <img src="https://placehold.co/50x50" class="rounded-circle me-3" alt="Client">
+                            <div>
+                                <h6 class="fw-bold mb-0">John Doe</h6>
+                                <small class="text-muted">CEO, TechStart</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feedback-card">
+                        <div class="text-warning mb-3">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p class="fst-italic">"Incredible attention to detail. The animation work on our landing page increased conversions by 20%."</p>
+                        <div class="d-flex align-items-center mt-4">
+                            <img src="https://placehold.co/50x50" class="rounded-circle me-3" alt="Client">
+                            <div>
+                                <h6 class="fw-bold mb-0">Sarah Smith</h6>
+                                <small class="text-muted">Marketing Director</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feedback-card">
+                        <div class="text-warning mb-3">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="fst-italic">"Professional, communicative, and skilled. I will definitely work with Alex again on future projects."</p>
+                        <div class="d-flex align-items-center mt-4">
+                            <img src="https://placehold.co/50x50" class="rounded-circle me-3" alt="Client">
+                            <div>
+                                <h6 class="fw-bold mb-0">Mike Ross</h6>
+                                <small class="text-muted">Founder, LegalSol</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <h3 class="mb-4">Let's Work Together</h3>
+            <div class="social-icons mb-4">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p class="text-white-50">&copy; 2024 AlexDev Portfolio. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Typewriter Effect
+        const textElement = document.querySelector('.typing-text');
+        const words = ['Web Developer', 'UI/UX Designer', 'Freelancer', 'Creative Thinker'];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function type() {
+            const currentWord = words[wordIndex];
+            
+            if (isDeleting) {
+                textElement.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                textElement.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 100 : 200;
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                isDeleting = true;
+                typeSpeed = 2000; // Pause at end of word
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+
+        // Start Typing on Load
+        document.addEventListener('DOMContentLoaded', type);
+
+        // Scroll Reveal Animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        });
+
+        const hiddenElements = document.querySelectorAll('.reveal');
+        hiddenElements.forEach((el) => observer.observe(el));
+    </script>
+</body>
+</html>
